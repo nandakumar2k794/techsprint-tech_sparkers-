@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSeeker - Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Job<span>Seeker</span></a>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span>Welcome, User</span>
+                <button onclick="handleLogout()" class="btn"
+                    style="padding: 0.5rem 1rem; font-size: 0.9rem; background: transparent; border: 1px solid var(--border-color);">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Job Search Section -->
+        <section class="search-hero">
+            <h1 class="section-title">Find Your Next Opportunity</h1>
+            <div class="search-box">
+                <input type="text" id="jobDomain" class="input-field"
+                    placeholder="Job Title or Domain (e.g. Frontend Dev)">
+                <input type="text" id="jobLocation" class="input-field" placeholder="Location (e.g. Remote, Bangalore)">
+                <button onclick="searchJobs()" class="btn">
+                    Search Jobs
+                    <div class="loader" id="searchLoader"></div>
+                </button>
+            </div>
+        </section>
+
+        <div id="jobResults" class="jobs-grid">
+            <!-- Job cards will be injected here -->
+        </div>
+
+        <!-- Resume Builder Section -->
+        <section class="resume-section">
+            <h2 class="section-title">AI Resume Builder</h2>
+            <div class="resume-container">
+                <div class="resume-form">
+                    <!-- Removed API Key Input as it is now hardcoded -->
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Current Role</label>
+                        <input type="text" id="currentRole" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Key Skills (comma separated)</label>
+                        <textarea id="skills" class="input-field" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Experience Summary</label>
+                        <textarea id="experience" class="input-field" rows="5"></textarea>
+                    </div>
+                    <button onclick="generateResume()" class="btn" style="width: 100%">
+                        Generate with AI
+                        <div class="loader" id="resumeLoader"></div>
+                    </button>
+                </div>
+
+                <div class="resume-preview" id="resumeOutput">
+                    <div style="text-align: center; color: #666; margin-top: 50%;">
+                        Generated resume will appear here...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="env.js"></script>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+
+</html>
